@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/13 03:39:54 by anclarma          #+#    #+#              #
-#    Updated: 2022/05/17 19:20:54 by anclarma         ###   ########.fr        #
+#    Updated: 2022/05/18 00:36:12 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ add_executable(
 	stack_test
 	anclarma_stack_test.cc
 	mli_stack_test.cc
+	mazoise_stack_test.cc
 	)
 target_link_libraries(
 	stack_test
