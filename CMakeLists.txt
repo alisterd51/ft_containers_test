@@ -6,18 +6,18 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/13 03:39:54 by anclarma          #+#    #+#              #
-#    Updated: 2022/05/17 17:03:14 by anclarma         ###   ########.fr        #
+#    Updated: 2022/05/17 17:15:58 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 cmake_minimum_required(VERSION 3.14)
 project(ft_containers)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED 11)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
+set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD_REQUIRED 98)
+set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Werror")
 # optonal flags
-# set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -pedantic -Weffc++")
+# set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Werror -pedantic -Weffc++")
 
 include(FetchContent)
 FetchContent_Declare(
@@ -30,7 +30,7 @@ FetchContent_MakeAvailable(googletest)
 
 include_directories(
 	# specify your include directories
-	../includes
+	../ft_containers/includes
 	)
 
 enable_testing()
