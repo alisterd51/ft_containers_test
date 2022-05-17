@@ -2,7 +2,7 @@
 #include <stack>
 #include "stack.hpp"
 
-TEST(StackTest, BasicFunctions)
+TEST(AnclarmaStackTest, BasicFunctions)
 {
 	std::deque<int>						mydeque (3,100);
 	std::vector<int>					myvector (2,200);
@@ -95,7 +95,7 @@ TEST(StackTest, BasicFunctions)
 	EXPECT_EQ(s4_std >= s5_std, s4_ft >= s5_ft);
 }
 
-TEST(StackTest, ConstFunctions)
+TEST(AnclarmaStackTest, ConstFunctions)
 {
 	const std::deque<int>						mydeque (3,100);
 	const std::vector<int>						myvector (2,200);
