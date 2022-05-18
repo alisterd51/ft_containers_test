@@ -13,3 +13,4 @@ cd debug
 cmake ..
 cmake --build .
 ./stack_test
+./vector_test

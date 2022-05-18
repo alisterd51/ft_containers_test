@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/13 03:39:54 by anclarma          #+#    #+#              #
-#    Updated: 2022/05/18 13:07:44 by anclarma         ###   ########.fr        #
+#    Updated: 2022/05/19 00:50:08 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,17 @@ add_executable(
 	mazoise_stack_test.cc
 	jgiron_stack_test.cc
 	)
+add_executable(
+	vector_test
+	anclarma_vector_test.cc
+	mli_vector_test.cc
+	)
 target_link_libraries(
 	stack_test
+	gtest_main
+	)
+target_link_libraries(
+	vector_test
 	gtest_main
 	)
 
