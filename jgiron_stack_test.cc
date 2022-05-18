@@ -27,9 +27,13 @@ namespace monkey_stack {
 			EXPECT_EQ(s1.empty(), s3.empty());
 			EXPECT_EQ(s1.size(), s3.size());
 			if (!s1.empty())
+			{
 				EXPECT_EQ(s1.top(), s3.top());
+			}
 			if (!s3.empty())
+			{
 				EXPECT_EQ(s1.top(), s3.top());
+			}
 		}
 
 	template<class FT_C, class STD_C>
