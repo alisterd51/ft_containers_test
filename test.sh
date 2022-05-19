@@ -11,6 +11,7 @@
 mkdir debug
 cd debug
 # for intel oneapi:
+#  source /opt/intel/oneapi/setvars.sh
 #  CC=icx CXX=icx
 # for clang:
 #  CC=clang CXX=clang++
