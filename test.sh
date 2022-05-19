@@ -10,7 +10,13 @@
 
 mkdir debug
 cd debug
-cmake ..
+# for intel oneapi:
+#  CC=icx CXX=icx
+# for clang:
+#  CC=clang CXX=clang++
+# for gcc:
+#  CC=gcc CXX=g++
+CC=clang CXX=clang++ cmake ..
 cmake --build .
 ./stack_test
 ./vector_test
