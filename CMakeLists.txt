@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/13 03:39:54 by anclarma          #+#    #+#              #
-#    Updated: 2022/05/19 00:50:08 by anclarma         ###   ########.fr        #
+#    Updated: 2022/05/23 23:13:45 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ project(ft_containers)
 
 set(CMAKE_CXX_STANDARD 98)
 set(CMAKE_CXX_STANDARD_REQUIRED 98)
-set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Werror")
+# set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Werror")
 # optonal flags with clang++ (not compatible with g++)
-# set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Werror -pedantic -Weffc++")
+set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Werror -pedantic -fsanitize=address -fsanitize=leak -fsanitize=undefined -g3")
 
 include(FetchContent)
 FetchContent_Declare(
@@ -47,12 +47,20 @@ add_executable(
 	anclarma_vector_test.cc
 	mli_vector_test.cc
 	)
+add_executable(
+	map_test
+	anclarma_map_test.cc
+	)
 target_link_libraries(
 	stack_test
 	gtest_main
 	)
 target_link_libraries(
 	vector_test
+	gtest_main
+	)
+target_link_libraries(
+	map_test
 	gtest_main
 	)
 

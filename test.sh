@@ -17,7 +17,8 @@ cd debug
 #  CC=clang CXX=clang++
 # for gcc:
 #  CC=gcc CXX=g++
-CC=clang CXX=clang++ cmake ..
+CC=gcc CXX=g++ cmake ..
 cmake --build .
 ./stack_test
 ./vector_test
+./map_test
