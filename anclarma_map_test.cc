@@ -17,6 +17,7 @@ TEST(AnclarmaMapTest, BasicFunctions)
 	std::map<int, double>	std_empty_map;
 
 	EXPECT_EQ(ft_empty_map.size(), std_empty_map.size());
+	EXPECT_EQ(ft_empty_map.max_size(), std_empty_map.max_size());
 
 	ft::map<int, double>	ft_set_map(std_vector.begin(), std_vector.end());
 	std::map<int, double>	std_set_map(std_vector.begin(), std_vector.end());
@@ -32,4 +33,13 @@ TEST(AnclarmaMapTest, BasicFunctions)
 	std_empty_map = std_map_map;
 	
 	EXPECT_EQ(ft_empty_map.size(), std_empty_map.size());
+	EXPECT_EQ(ft_empty_map.max_size(), std_empty_map.max_size());
+	
+	EXPECT_EQ(ft_empty_map[1], std_empty_map[1]);
+	EXPECT_EQ(ft_empty_map[2], std_empty_map[2]);
+	EXPECT_EQ(ft_empty_map[3], std_empty_map[3]);
+	EXPECT_EQ(ft_empty_map[4], std_empty_map[4]);
+	
+	EXPECT_EQ(ft_empty_map.size(), std_empty_map.size());
+	EXPECT_EQ(ft_empty_map.max_size(), std_empty_map.max_size());
 }

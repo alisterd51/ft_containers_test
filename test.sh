@@ -19,6 +19,7 @@ cd debug
 #  CC=gcc CXX=g++
 CC=gcc CXX=g++ cmake ..
 cmake --build .
+./base_test
 ./stack_test
 ./vector_test
 ./map_test

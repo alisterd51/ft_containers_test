@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/13 03:39:54 by anclarma          #+#    #+#              #
-#    Updated: 2022/05/23 23:13:45 by anclarma         ###   ########.fr        #
+#    Updated: 2022/05/24 04:38:20 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,10 @@ include_directories(
 enable_testing()
 
 add_executable(
+	base_test
+	anclarma_base_test.cc
+	)
+add_executable(
 	stack_test
 	anclarma_stack_test.cc
 	mli_stack_test.cc
@@ -50,6 +54,10 @@ add_executable(
 add_executable(
 	map_test
 	anclarma_map_test.cc
+	)
+target_link_libraries(
+	base_test
+	gtest_main
 	)
 target_link_libraries(
 	stack_test
