@@ -2,7 +2,7 @@
 #include <stack>
 #include "stack.hpp"
 #ifndef NTEST
-# define NTEST 50000
+# define NTEST 5000
 #endif
 
 namespace monkey_stack {
