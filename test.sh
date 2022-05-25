@@ -18,6 +18,8 @@ cd debug
 # for gcc:
 #  CC=gcc CXX=g++
 CC=gcc CXX=g++ cmake ..
+# next line potentially replaceable with:
+#  scan-build-12 make
 cmake --build .
 ./base_test
 ./stack_test
