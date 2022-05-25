@@ -3,25 +3,32 @@
 #include "map.hpp"
 
 #include <utility> //pair make_pair
-#include <set>
+#include "utility.hpp" //pair make_pair //a enlever
+#include <vector>
 
 TEST(AnclarmaMapTest, BasicFunctions)
 {
-	std::vector<std::pair<int, double> >	std_vector;
+	std::vector<ft::pair<int, double> >	std_vector_ft_pair;
 
-	std_vector.push_back(std::make_pair(1, 21.0));
-	std_vector.push_back(std::make_pair(2, 25.0));
-	std_vector.push_back(std::make_pair(3, 42.0));
+	std_vector_ft_pair.push_back(ft::make_pair(1, 21.0));
+	std_vector_ft_pair.push_back(ft::make_pair(2, 25.0));
+	std_vector_ft_pair.push_back(ft::make_pair(3, 42.0));
 
-	ft::map<int, double>	ft_empty_map;
-	std::map<int, double>	std_empty_map;
+	std::vector<std::pair<int, double> >	std_vector_std_pair;
+
+	std_vector_std_pair.push_back(std::make_pair(1, 21.0));
+	std_vector_std_pair.push_back(std::make_pair(2, 25.0));
+	std_vector_std_pair.push_back(std::make_pair(3, 42.0));
+
+	ft::map<int, double, std::less<int>, std::allocator<ft::pair<const int, double> > > 	ft_empty_map;
+	std::map<int, double, std::less<int>, std::allocator<std::pair<const int, double> > >	std_empty_map;
 
 	EXPECT_EQ(ft_empty_map.empty(), std_empty_map.empty());
 	EXPECT_EQ(ft_empty_map.size(), std_empty_map.size());
 	EXPECT_EQ(ft_empty_map.max_size(), std_empty_map.max_size());
 
-	ft::map<int, double>	ft_vector_map(std_vector.begin(), std_vector.end());
-	std::map<int, double>	std_vector_map(std_vector.begin(), std_vector.end());
+	ft::map<int, double, std::less<int>, std::allocator<ft::pair<const int, double> > >		ft_vector_map(std_vector_ft_pair.begin(), std_vector_ft_pair.end());
+	std::map<int, double, std::less<int>, std::allocator<std::pair<const int, double> > >	std_vector_map(std_vector_std_pair.begin(), std_vector_std_pair.end());
 
 	EXPECT_EQ(ft_vector_map.empty(), std_vector_map.empty());
 	EXPECT_EQ(ft_vector_map.size(), std_vector_map.size());	
@@ -72,13 +79,13 @@ TEST(AnclarmaMapTest, BasicFunctions)
 
 		ft_empty_map.clear();
 		std_empty_map.clear();
-		
+
 		EXPECT_EQ(ft_empty_map.empty(), std_empty_map.empty());
 		EXPECT_EQ(ft_empty_map.size(), std_empty_map.size());
 	}
 
-	ft::map<int, double>	ft_map_map(ft_vector_map);
-	std::map<int, double>	std_map_map(std_vector_map);
+	ft::map<int, double, std::less<int>, std::allocator<ft::pair<const int, double> > >	ft_map_map(ft_vector_map);
+	std::map<int, double, std::less<int>, std::allocator<std::pair<const int, double> > >	std_map_map(std_vector_map);
 
 	EXPECT_EQ(ft_vector_map.empty(), std_vector_map.empty());
 	EXPECT_EQ(ft_map_map.size(), std_map_map.size());
@@ -119,4 +126,12 @@ TEST(AnclarmaMapTest, BasicFunctions)
 	EXPECT_EQ(ft_empty_map.empty(), std_empty_map.empty());
 	EXPECT_EQ(ft_empty_map.size(), std_empty_map.size());
 	EXPECT_EQ(ft_empty_map.max_size(), std_empty_map.max_size());
+
+	//test key_comp
+	ft::map<int,double>::key_compare ft_comp = ft_empty_map.key_comp();
+	std::map<int,double>::key_compare std_comp = std_empty_map.key_comp();
+	
+	EXPECT_EQ(ft_comp(1, 2), std_comp(1, 2));
+	EXPECT_EQ(ft_comp(3, 2), std_comp(3, 2));
+	EXPECT_EQ(ft_comp(42, 42), std_comp(42, 42));
 }
