@@ -187,4 +187,40 @@ TEST(AnclarmaMapTest, BasicFunctions)
 		ft_mymap.get_allocator().deallocate(ft_p, 5);
 		std_mymap.get_allocator().deallocate(std_p, 5);
 	}
+	{
+		//test iterator
+		ft::map<char,int>						ft_mymap;
+		std::map<char,int>						std_mymap;
+	
+		ft::map<char,int>::iterator				ft_it;
+		std::map<char,int>::iterator			std_it;
+	
+		ft::map<char,int>::iterator				ft_itb(ft_mymap.begin());
+		std::map<char,int>::iterator			std_itb(std_mymap.begin());
+	
+		ft::map<char,int>::iterator				ft_ite(ft_mymap.end());
+		std::map<char,int>::iterator			std_ite(std_mymap.end());
+
+		ft::map<char,int>::reverse_iterator		ft_itrb(ft_mymap.rbegin());
+		std::map<char,int>::reverse_iterator	std_itrb(std_mymap.rbegin());
+	
+		ft::map<char,int>::reverse_iterator		ft_itre(ft_mymap.rend());
+		std::map<char,int>::reverse_iterator	std_itre(std_mymap.rend());
+	}
+	{/*
+		//test iterator
+		ft::map<char,int>						ft_mymap;
+		std::map<char,int>						std_mymap;
+	
+		ft::map<char,int>::iterator				ft_itb(ft_mymap.begin());
+		std::map<char,int>::iterator			std_itb(std_mymap.begin());
+	
+		ft::map<char,int>::iterator				ft_ite(ft_mymap.end());
+		std::map<char,int>::iterator			std_ite(std_mymap.end());
+
+		while (ft_itb != ft_ite)
+			++ft_itb;
+		while (std_itb != std_ite)
+			++std_itb;
+	*/}
 }

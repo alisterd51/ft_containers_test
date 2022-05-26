@@ -20,8 +20,10 @@ cd debug
 CC=gcc CXX=g++ cmake ..
 # next line potentially replaceable with:
 #  scan-build-12 make
-cmake --build .
-./base_test
-./stack_test
-./vector_test
-./map_test
+if cmake --build .
+then
+	./base_test
+	./stack_test
+	./vector_test
+	./map_test
+fi
