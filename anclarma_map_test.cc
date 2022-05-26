@@ -207,7 +207,7 @@ TEST(AnclarmaMapTest, BasicFunctions)
 		ft::map<char,int>::reverse_iterator		ft_itre(ft_mymap.rend());
 		std::map<char,int>::reverse_iterator	std_itre(std_mymap.rend());
 	}
-	{/*
+	{
 		//test iterator
 		ft::map<char,int>						ft_mymap;
 		std::map<char,int>						std_mymap;
@@ -218,9 +218,36 @@ TEST(AnclarmaMapTest, BasicFunctions)
 		ft::map<char,int>::iterator				ft_ite(ft_mymap.end());
 		std::map<char,int>::iterator			std_ite(std_mymap.end());
 
+		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
 		while (ft_itb != ft_ite)
 			++ft_itb;
 		while (std_itb != std_ite)
 			++std_itb;
-	*/}
+	}
+	{
+		//test iterator
+		ft::map<char,int>						ft_mymap;
+		std::map<char,int>						std_mymap;
+
+		ft_mymap['a'] = 1;
+		ft_mymap['b'] = 2;
+		std_mymap['a'] = 1;
+		std_mymap['b'] = 2;
+
+		ft::map<char,int>::iterator				ft_itb(ft_mymap.begin());
+		std::map<char,int>::iterator			std_itb(std_mymap.begin());
+	
+		ft::map<char,int>::iterator				ft_ite(ft_mymap.end());
+		std::map<char,int>::iterator			std_ite(std_mymap.end());
+
+		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+		while (ft_itb != ft_ite)
+			++ft_itb;
+		while (std_itb != std_ite)
+			++std_itb;
+		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+	}
 }
