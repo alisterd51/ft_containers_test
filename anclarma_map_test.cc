@@ -243,11 +243,32 @@ TEST(AnclarmaMapTest, BasicFunctions)
 
 		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
 		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
-		while (ft_itb != ft_ite)
-			++ft_itb;
-		while (std_itb != std_ite)
-			++std_itb;
+
+		int	i;
+		int	j;
+
+		for (i = 0; ft_itb != ft_ite && i < 5; ++i, ++ft_itb)
+			;
+		for (j = 0; std_itb != std_ite && j < 5; ++j, ++std_itb)
+			;
+		
 		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
 		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+		EXPECT_EQ(i, j);
+
+		ft_itb = ft_mymap.begin();
+		std_itb = std_mymap.begin();
+		
+		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+		
+		for (i = 0; ft_itb != ft_ite && i < 5; ++i, --ft_ite)
+			;
+		for (j = 0; std_itb != std_ite && j < 5; ++j, --std_ite)
+			;
+		
+		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+		EXPECT_EQ(i, j);
 	}
 }
