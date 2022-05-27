@@ -241,34 +241,100 @@ TEST(AnclarmaMapTest, BasicFunctions)
 		ft::map<char,int>::iterator				ft_ite(ft_mymap.end());
 		std::map<char,int>::iterator			std_ite(std_mymap.end());
 
-		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
-		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
-
 		int	i;
 		int	j;
 
-		for (i = 0; ft_itb != ft_ite && i < 5; ++i, ++ft_itb)
-			;
-		for (j = 0; std_itb != std_ite && j < 5; ++j, ++std_itb)
-			;
-		
-		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
-		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
-		EXPECT_EQ(i, j);
+		{
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
 
-		ft_itb = ft_mymap.begin();
-		std_itb = std_mymap.begin();
-		
-		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
-		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
-		
-		for (i = 0; ft_itb != ft_ite && i < 5; ++i, --ft_ite)
-			;
-		for (j = 0; std_itb != std_ite && j < 5; ++j, --std_ite)
-			;
-		
-		EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
-		EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
-		EXPECT_EQ(i, j);
+			for (i = 0; ft_itb != ft_ite && i < 5; ++i, ++ft_itb)
+				;
+			for (j = 0; std_itb != std_ite && j < 5; ++j, ++std_itb)
+				;
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+			EXPECT_EQ(i, j);
+		}
+		{
+			ft_itb = ft_mymap.begin();
+			std_itb = std_mymap.begin();
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+
+			for (i = 0; ft_itb != ft_ite && i < 5; ++i, --ft_ite)
+				;
+			for (j = 0; std_itb != std_ite && j < 5; ++j, --std_ite)
+				;
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+			EXPECT_EQ(i, j);
+		}
+		{
+			ft_ite = ft_mymap.end();
+			std_ite = std_mymap.end();
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+
+			for (; ft_itb != ft_ite && std_itb != std_ite; ++ft_itb, ++std_itb)
+			{
+				EXPECT_EQ(*ft_itb == *ft_itb, *std_itb == *std_itb);
+			}
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+
+			ft_itb = ft_mymap.begin();
+			std_itb = std_mymap.begin();
+		}
+		{
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+
+			for (; ft_itb != ft_ite && std_itb != std_ite; ++ft_itb, ++std_itb)
+			{
+				EXPECT_EQ(ft_itb->first, std_itb->first);
+				EXPECT_EQ(ft_itb->second, std_itb->second);
+			}
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+
+			ft_itb = ft_mymap.begin();
+			std_itb = std_mymap.begin();
+		}
+		{
+			ft::map<char,int>						ft_mymap_bis;
+			std::map<char,int>						std_mymap_bis;
+
+			ft_mymap_bis['a'] = 1;
+			ft_mymap_bis['b'] = 2;
+			std_mymap_bis['a'] = 1;
+			std_mymap_bis['b'] = 2;
+
+			ft::map<char,int>::iterator				ft_itb_bis(ft_mymap.begin());
+			std::map<char,int>::iterator			std_itb_bis(std_mymap.begin());
+
+			ft::map<char,int>::iterator				ft_ite_bis(ft_mymap.end());
+			std::map<char,int>::iterator			std_ite_bis(std_mymap.end());
+
+			while (std_itb != std_ite)
+			{
+				EXPECT_EQ(*ft_itb, *ft_itb_bis);
+				EXPECT_EQ(*std_itb, *std_itb_bis);
+				EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+				EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+				++ft_itb;
+				++std_itb;
+				++ft_itb_bis;
+				++std_itb_bis;
+			}
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+		}
 	}
 }
