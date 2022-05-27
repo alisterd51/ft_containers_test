@@ -256,11 +256,30 @@ TEST(AnclarmaMapTest, BasicFunctions)
 			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
 			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
 			EXPECT_EQ(i, j);
-		}
-		{
+			
 			ft_itb = ft_mymap.begin();
 			std_itb = std_mymap.begin();
+		}
+		{
+			ft_itb = ft_mymap.find('b');
+			std_itb = std_mymap.find('b');
+			
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
 
+			for (i = 0; ft_itb != ft_ite && i < 5; ++i, ++ft_itb)
+				;
+			for (j = 0; std_itb != std_ite && j < 5; ++j, ++std_itb)
+				;
+
+			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
+			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
+			EXPECT_EQ(i, j);
+			
+			ft_itb = ft_mymap.begin();
+			std_itb = std_mymap.begin();
+		}
+		{
 			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
 			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
 
@@ -336,5 +355,28 @@ TEST(AnclarmaMapTest, BasicFunctions)
 			EXPECT_EQ(ft_itb == ft_ite, std_itb == std_ite);
 			EXPECT_EQ(ft_itb != ft_ite, std_itb != std_ite);
 		}
+	}
+	{
+		ft::map<char,int> ft_mymap;
+		std::map<char,int> std_mymap;
+
+		ft_mymap['a']=10;
+		ft_mymap['b']=20;
+		ft_mymap['c']=30;
+		std_mymap['a']=10;
+		std_mymap['b']=20;
+		std_mymap['c']=30;
+
+		while (!ft_mymap.empty() && !std_mymap.empty())
+		{
+			EXPECT_EQ(ft_mymap.begin()->first, std_mymap.begin()->first);
+			EXPECT_EQ(ft_mymap.begin()->second, std_mymap.begin()->second);
+			ft_mymap.erase(ft_mymap.begin());
+			std_mymap.erase(std_mymap.begin());
+		}
+		EXPECT_EQ(ft_mymap.empty(), std_mymap.empty());
+		EXPECT_EQ(ft_mymap.size(), std_mymap.size());
+	}
+	{
 	}
 }
