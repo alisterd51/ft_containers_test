@@ -388,5 +388,38 @@ TEST(AnclarmaMapTest, BasicFunctions)
 		EXPECT_EQ(ft_mymap.size(), std_mymap.size());
 	}
 	{
+		ft::pair<int, std::string>			ft_my_pair(8, "salut");
+		ft::map<int, std::string>			ft_test;
+		ft::map<int, std::string>::iterator	ft_it;
+
+		ft_test.insert(ft_my_pair);
+		ft_test.insert(ft::pair<int, std::string>(-4, "bar"));
+		ft_test.insert(ft::pair<int, std::string>(2, "machin"));
+		ft_test.insert(ft::pair<int, std::string>(3, "foo"));
+		ft_test.insert(ft::pair<int, std::string>(746, "Marcel"));
+		ft_test.insert(ft::pair<int, std::string>(1, "truc"));
+		ft_it = ft_test.begin();
+
+		std::pair<int, std::string>			std_my_pair(8, "salut");
+		std::map<int, std::string>			std_test;
+		std::map<int, std::string>::iterator	std_it;
+
+		std_test.insert(std_my_pair);
+		std_test.insert(std::pair<int, std::string>(-4, "bar"));
+		std_test.insert(std::pair<int, std::string>(2, "machin"));
+		std_test.insert(std::pair<int, std::string>(3, "foo"));
+		std_test.insert(std::pair<int, std::string>(746, "Marcel"));
+		std_test.insert(std::pair<int, std::string>(1, "truc"));
+		std_it = std_test.begin();
+
+		int	i = 0;
+		while (ft_it != ft_test.end() && i < 15)
+		{
+			EXPECT_EQ(ft_it->first, std_it->first);
+			EXPECT_EQ(ft_it->second, std_it->second);
+			++ft_it;
+			++std_it;
+			i++;
+		}
 	}
 }
