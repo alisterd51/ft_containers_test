@@ -206,6 +206,19 @@ TEST(AnclarmaMapTest, BasicFunctions)
 	
 		ft::map<char,int>::reverse_iterator		ft_itre(ft_mymap.rend());
 		std::map<char,int>::reverse_iterator	std_itre(std_mymap.rend());
+
+		(void)ft_mymap;
+		(void)std_mymap;
+		(void)ft_it;
+		(void)std_it;
+		(void)ft_itb;
+		(void)std_itb;
+		(void)ft_ite;
+		(void)std_ite;
+		(void)ft_itrb;
+		(void)std_itrb;
+		(void)ft_itre;
+		(void)std_itre;
 	}
 	{
 		//test iterator
@@ -337,9 +350,6 @@ TEST(AnclarmaMapTest, BasicFunctions)
 
 			ft::map<char,int>::iterator				ft_itb_bis(ft_mymap.begin());
 			std::map<char,int>::iterator			std_itb_bis(std_mymap.begin());
-
-			ft::map<char,int>::iterator				ft_ite_bis(ft_mymap.end());
-			std::map<char,int>::iterator			std_ite_bis(std_mymap.end());
 
 			while (std_itb != std_ite)
 			{
